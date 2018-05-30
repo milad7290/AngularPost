@@ -1,0 +1,41 @@
+<input [(ngModel)]="name" #ctrl="ngModel" type="text" placeholder="search" />
+
+<div>
+  <label>post title:
+    <input #postTitle />
+  </label>
+  <label>post auther:
+    <input #postAuther />
+  </label>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(postTitle.value,postAuther.value); postTitle.value=''">
+    add
+  </button>
+</div>
+<table>
+  <tr>
+    <th>id</th>
+    <th>userid</th>
+    <th>title</th>
+    <th>details</th>
+    <th>comments</th>
+  </tr>
+  <tr *ngFor="let post of posts | filter : name">
+    <td>{{post.id}}</td>
+    <td>{{post.userid}}</td>
+    <td>{{post.title}}</td>
+    <td>
+      <a routerLink="/post/{{post.id}}">
+        {{post.id}}+' '+{{post.userid}}
+      </a>
+    </td>
+    <td>
+      <button  title="delete post" (click)="delete(post)">x</button>
+    </td>
+    <a routerLink="/comment/{{post.id}}">
+      {{post.id}}+' '+{{post.userid}} <span>comment</span>
+    </a>
+  </tr>
+
+</table>

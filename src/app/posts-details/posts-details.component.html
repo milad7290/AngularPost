@@ -1,0 +1,11 @@
+<div *ngIf="post">
+    <h2>{{ post.title | uppercase }} title</h2>
+    <div><span>id: </span>{{post.id}}</div>
+    <div>
+      <label>auther:
+       {{post.auther}}
+      </label>
+    </div>
+    <button (click)="goBack()">go back</button>
+  </div>
+  

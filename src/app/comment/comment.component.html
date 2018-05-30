@@ -1,0 +1,29 @@
+<div>
+  <label>comment body:
+    <input #commentbody />
+  </label>
+ 
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(commentbody.value); commentbody.value=''">
+    add
+  </button>
+</div>
+<table>
+  <tr>
+    <th>id</th>
+    <th>postid</th>
+    <th>body</th>
+  </tr>
+  <tr *ngFor="let comment of comments">
+    <td>{{comment.id}}</td>
+    <td>{{comment.postid}}</td>
+    <td>{{comment.body}}</td>
+    <td>
+      <button  title="delete comment" (click)="delete(comment)">x</button>
+    </td>
+
+  </tr>
+
+</table>
+<button (click)="goBack()">go back</button>
